@@ -69,7 +69,7 @@ Die Antwort enthält ein JSON Objekt mit den Terminen für Restmüll, Gelbe Tonn
 }
 ```
 
-Um zu prüfen, ob an einem bestimmten Tag Müll abgeholt wird, kann man zusätzlich den Parameter `Tag` angeben:
+Um zu prüfen, ob an einem bestimmten Tag Müll abgeholt wird, kann man zusätzlich den Parameter `Tag` angeben, mögliche Werte sind Heute, Morgen und ein Datum im Format Y-m-d (2023-12-01):
 
 ```
 http://localhost/index.php?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12&Tag=2023-03-15
