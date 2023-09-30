@@ -1,6 +1,6 @@
 # Müllabfuhr-Abfrage
 
-Dieses Programm ermöglicht die Abfrage von Müllabfuhrterminen über die API des Landkreises Garmisch-Partenkirchen.
+Dieses Programm ermöglicht die Abfrage von Müllabfuhrterminen über die gehackte API des Landkreises Garmisch-Partenkirchen.
 
 Link zum selbstgehosteten Webserver zur freien Nutzung der API:
 [API-Endpunkt](https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12)
