@@ -1,5 +1,5 @@
 <?php
-// Zum Debugen
+// Zum Debuggen
 // error_reporting(E_ALL);
 // ini_set('display_errors', '1');
 header("Content-Type: application/json");
