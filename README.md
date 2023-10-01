@@ -124,7 +124,7 @@ $json = file_get_contents("https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=
   $address = $data->Daten->Adresse;
   $status = $data->Daten->Stand;
   
-  // Termine ausgeben
+  // Daten ausgeben
   echo "Adresse: " . $address . "<br>"; 
   echo "Stand: " . $status . "<br>";
   
