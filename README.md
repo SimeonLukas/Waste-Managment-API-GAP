@@ -106,6 +106,160 @@ Bei einem Datum ohne Abholung wird ein `false` in Abfuhr zurückgegeben.
 - PHP und php-curl muss installiert und aktiviert sein  
 - ggf. Pfad zur Datei in `.htaccess` eintragen
 
+## Auswertung
+
+### PHP-Code
+
+```php
+<?php
+
+$json = file_get_contents("https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12&Hausnummerzusatz=");
+  
+  // JSON dekodieren
+  $data = json_decode($json);
+  
+  // Werte auslesen 
+  $address = $data->Daten->Adresse;
+  $status = $data->Daten->Stand;
+  
+  // Termine ausgeben
+  echo "Adresse: " . $address . "<br>"; 
+  echo "Stand: " . $status . "<br>";
+  
+  foreach ($data->Daten->Müll as $wasteType) {
+  
+    echo "<h4>" . $wasteType->Typ . " (" . $wasteType->Zeichen . ")</h4>";
+    
+    // Termine ausgeben
+    foreach ($wasteType->Termine as $termin) {
+      echo $termin . "<br>";
+    }
+  
+    echo "<br>";
+  
+  }
+```
+
+## JS-Code
+```Javascript
+// URL zur API
+const url = 'https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12';
+
+// Daten abrufen
+async function getData() {
+
+  // Fetch Request senden 
+  const response = await fetch(url);
+
+  // Antwort als JSON parsen
+  const data = await response.json();
+
+  // Daten verarbeiten
+  showData(data);
+
+}
+
+// Daten anzeigen
+function showData(data) {
+
+  // Werte auslesen
+  const address = data.Daten.Adresse;
+  const status = data.Daten.Stand;
+  let waste = data.Daten.Müll;
+  waste = Object.entries(waste);
+  // Ausgabe zusammenstellen
+  let output = `
+    <h3>Adresse</h3>
+    ${address}
+
+    <h3>Stand</h3> 
+    ${status}
+  `;
+
+  // Termine auslesen
+  for (let i = 0; i < waste.length; i++) {
+    waste[i] = waste[i][1];
+    output += `
+      <h4>${waste[i].Typ}</h4>
+      <p>${waste[i].Termine}</p>
+    `;
+  }
+  
+
+  // Ausgabe setzen
+  document.getElementById('data').innerHTML = output;
+
+}
+
+// Los gehts
+getData();
+```
+
+
+#### Tagabfrage
+##### Eingabe
+```Javascript
+// URL zur API
+const url = 'https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12&Tag=2023-10-10';
+
+// Daten abrufen
+async function getData() {
+
+  // Fetch Request senden 
+  const response = await fetch(url);
+
+  // Antwort als JSON parsen
+  const data = await response.json();
+
+  // Daten verarbeiten
+  showData(data);
+
+}
+
+// Daten anzeigen
+function showData(data) {
+
+  // Werte auslesen
+  const date = data.Daten.Datum;
+  const status = data.Daten.Abfuhr;
+  let output = `
+  <h3>Abfuhr</h3>
+  ${date}
+
+  <h3>Stand</h3> 
+  ${status}
+`;
+  if (status != false) {
+    const Typ = data.Daten.Typ;
+    const Zeichen = data.Daten.Zeichen;
+    output += `
+      <h4>${Typ}</h4>
+      <p>${Zeichen}</p>
+    `;
+
+  }
+  // Ausgabe setzen
+  document.getElementById('data').innerHTML = output;
+
+}
+
+// Los gehts
+getData();
+```
+
+
+##### Ausgabe
+
+```
+Abfuhr
+2023-10-10
+Stand
+true
+Restmüll
+R
+``````
+Anhand der Antwort kann man erkennen, dass die Abholung am 10.10.2023 stattfindet und Aktionen anhand der Werte auslösen.
+
 ## Hinweise
 
 - Es werden nur Daten für den Landkreis Garmisch-Partenkirchen unterstützt
