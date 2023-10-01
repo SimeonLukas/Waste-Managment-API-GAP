@@ -2,6 +2,8 @@
 
 Dieses Programm ermöglicht die Abfrage von Müllabfuhrterminen über die gehackte API des Landkreises Garmisch-Partenkirchen.
 
+Folgende Orte sind verfügbar: Bad Bayersoien, Bad Kohlgrub, Eschenlohe, Ettal, Farchant, Grainau, Großweil, Krün, Mittenwald, Murnau a. Staffelsee, Oberammergau, Oberau, Ohlstadt, Riegsee, Saulgrub, Schwaigen, Seehausen a. Staffelsee, Spatzenhausen, Uffing a. Staffelsee, Unterammergau, Wallgau
+
 Link zum selbstgehosteten Webserver zur freien Nutzung der API:
 [API-Endpunkt](https://mt183.de/abfallgap/?Ort=Oberammergau&Strasse=Schwedengasse&Hausnummer=12)
 
