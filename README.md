@@ -260,7 +260,7 @@ true
 Restmüll
 R
 ``````
-Anhand der Antwort kann man erkennen, dass die Abholung am 10.10.2023 stattfindet und Aktionen anhand der Werte auslösen.
+Anhand der Antwort kann man erkennen, dass die Abholung am 10.10.2023 stattfindet und man kann Aktionen anhand der Werte auslösen.
 
 ## Hinweise
 
